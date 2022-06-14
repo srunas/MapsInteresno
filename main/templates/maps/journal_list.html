@@ -1,0 +1,22 @@
+{% extends "maps/base.html" %}
+{% load humanize %}
+{% block content %}
+<h2>ALL JOURNALS</h2>
+<a href="journalcreate"><button class="btn btn-primary" type = "submit">Add a New Journal</button></a>
+<div>
+   {% for journal in journal_list %}
+   <div class="list-group">
+      <! -- rl 'updatejournal' pk=Journal.pk
+      Думал попробовать сделать тут переход по сылке по клику на запись, но так и не смог придумать как сделать это
+      -->
+      <a href="journalupdate/5" class="list-group-item list-group-item-action flex-column align-items-start">
+         <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ journal.title }}</h5>
+            <small>{{ journal.date_created|naturaltime }}</small>
+         </div>
+         <p class="mb-1">{{ journal.description| truncatechars:120}}</p>
+      </a>
+   </div>
+   {% endfor %}
+   {% endblock %}
+</div>
